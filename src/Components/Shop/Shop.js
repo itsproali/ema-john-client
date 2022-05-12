@@ -13,13 +13,13 @@ const Shop = () => {
   const [pageNo, setPageNo] = useState(0);
   const [page, setPage] = useState(0);
   useEffect(() => {
-    fetch(`http://localhost:5000/products?page=${page}`)
+    fetch(`https://ema-john-itsproali.herokuapp.com/products?page=${page}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [page]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/count")
+    fetch("https://ema-john-itsproali.herokuapp.com/count")
       .then((res) => res.json())
       .then((data) => {
         const count = data.count;
@@ -67,6 +67,8 @@ const Shop = () => {
           <Cart text="Review Order" cart={cart} clear={clearCart}></Cart>
         </div>
       </div>
+
+      {/* Pagination */}
       <div className="my-4 mx-auto text-center">
         {[...Array(pageNo).keys()].map((number) => (
           <button

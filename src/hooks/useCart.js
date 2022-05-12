@@ -1,19 +1,25 @@
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase-init";
 import { getStoredCart } from "../utilities/fakedb";
 
 const useCart = () => {
   const [cart, setCart] = useState([]);
+  const [user] = useAuthState(auth);
+
   useEffect(() => {
     const storedCart = getStoredCart();
     const savedCart = [];
     const keys = Object.keys(storedCart);
+    const uid = user?.user?.uid;
 
-    fetch("http://localhost:5000/cartProducts", {
+    fetch("https://ema-john-itsproali.herokuapp.com/cartProducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(keys),
+      body: JSON.stringify({ keys, uid }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -27,7 +33,7 @@ const useCart = () => {
         }
         setCart(savedCart);
       });
-  }, []);
+  }, [user]);
   return [cart, setCart];
 };
 

@@ -24,6 +24,10 @@
     transition: .3s;
 }
 
+.page-btn:hover {
+    background-color: var(--gray-50);
+}
+
 .selected {
     color: white;
     background-color: hsl(250, 100%, 12%);

@@ -24,6 +24,16 @@ const Login = () => {
     if (user) {
       setEmail("");
       setPassword("");
+      const userId = user.user.uid;
+      fetch("https://ema-john-itsproali.herokuapp.com/getToken", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ userId }),
+      })
+        .then((res) => res.json())
+        .then((data) => localStorage.setItem("accessToken", data.accessToken));
       navigate(from, { replace: true });
     }
   }, [user, navigate, from]);
@@ -33,8 +43,7 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-  const [sendPasswordResetEmail, sending] =
-    useSendPasswordResetEmail(auth);
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
   const resetPassword = () => {
     if (email) {
       sendPasswordResetEmail(email);
@@ -80,11 +89,11 @@ const Login = () => {
               onBlur={(e) => setPassword(e.target.value)}
               required
             />
-            <p className="text-right">
-              <button onClick={resetPassword} className="text-orange-400">
+            <div className="text-right">
+              <p onClick={resetPassword} className="text-orange-400 cursor-pointer inline-block">
                 Forgot Password
-              </button>
-            </p>
+              </p>
+              </div>
           </div>
 
           <div className="input-group">

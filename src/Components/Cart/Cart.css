@@ -1,0 +1,57 @@
+.shopping-cart {
+    position: sticky;
+    top: 100px;
+}
+
+.order-heading {
+    text-align: center;
+    padding: 30px 0;
+    font-weight: 600;
+}
+
+.order-details {
+    color: #2A414F;
+    margin: 15px 10px;
+}
+
+.grand-total {
+    font-weight: 500;
+    margin: 15px 0 50px 10px;
+}
+
+.clear,
+.order {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    margin: 15px 0;
+    padding: 12px 0;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .4s;
+}
+
+.clear-text,
+.order-text {
+    margin-right: 10px;
+}
+
+.clear {
+    background-color: orangered;
+}
+
+.clear:hover {
+    background-color: darkred;
+}
+
+.order {
+    background-color: orange;
+}
+
+.order:hover {
+    background-color: darkorange;
+}

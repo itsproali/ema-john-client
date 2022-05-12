@@ -1,0 +1,22 @@
+:root {
+  --light-orange: #FFE0B3;
+  --orange-10: #ff9900;
+  --orange-30: hsl(30, 100%, 50%);
+  --orange-40: #995c00;
+  --orange-70: #4c2e00;
+  --gray-50: #95A0A7;
+  --blue-10: #2a414f;
+  --blue-40: #1c2b35;
+  --blue-70: #0e161a;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

@@ -20,6 +20,16 @@ const SignUp = () => {
     if (user) {
       setEmail("");
       setPassword("");
+      const userId = user.user.uid;
+      fetch("https://ema-john-itsproali.herokuapp.com/getToken", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ userId }),
+      })
+        .then((res) => res.json())
+        .then((data) => localStorage.setItem("accessToken", data.accessToken));
       navigate(from, { replace: true });
     }
   }, [user, navigate, from]);

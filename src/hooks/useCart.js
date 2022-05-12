@@ -11,7 +11,7 @@ const useCart = () => {
     const storedCart = getStoredCart();
     const savedCart = [];
     const keys = Object.keys(storedCart);
-    const uid = user?.user?.uid;
+    const userId = user?.user?.uid;
 
     fetch("https://ema-john-itsproali.herokuapp.com/cartProducts", {
       method: "POST",
@@ -19,7 +19,7 @@ const useCart = () => {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify({ keys, uid }),
+      body: JSON.stringify({ keys,  userId }),
     })
       .then((res) => res.json())
       .then((data) => {

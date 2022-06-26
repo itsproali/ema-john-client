@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import useCart from "../../hooks/useCart";
-// import useProducts from "../../hooks/useProducts";
 import { addToDb, deleteShoppingCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
 
 const Shop = () => {
-  // const [products] = useProducts();
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useCart();
   const [pageNo, setPageNo] = useState(0);

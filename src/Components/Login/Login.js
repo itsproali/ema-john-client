@@ -24,16 +24,6 @@ const Login = () => {
     if (user) {
       setEmail("");
       setPassword("");
-      const userId = user.user.uid;
-      fetch("https://ema-john-itsproali.herokuapp.com/getToken", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ userId }),
-      })
-        .then((res) => res.json())
-        .then((data) => localStorage.setItem("accessToken", data.accessToken));
       navigate(from, { replace: true });
     }
   }, [user, navigate, from]);
@@ -90,10 +80,13 @@ const Login = () => {
               required
             />
             <div className="text-right">
-              <p onClick={resetPassword} className="text-orange-400 cursor-pointer inline-block">
+              <p
+                onClick={resetPassword}
+                className="text-orange-400 cursor-pointer inline-block"
+              >
                 Forgot Password
               </p>
-              </div>
+            </div>
           </div>
 
           <div className="input-group">

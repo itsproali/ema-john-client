@@ -1,21 +1,22 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import Header from "./Components/Header/Header";
-import Home from "./Components/Home/Home";
-import Login from "./Components/Login/Login";
-import Loading from "./Components/Loading/Loading";
-import Inventory from "./Components/Inventory/Inventory";
-import Notfound from "./Components/Notfound/Notfound";
-import OrderReview from "./Components/OrderReview/OrderReview";
-import Required from "./Components/Required/Required";
-import Shop from "./Components/Shop/Shop";
-import SignUp from "./Components/SignUp/SignUp";
-import Shipping from "./Components/Shipping/Shipping";
+import { lazy } from "react";
+const Header = lazy(() => import("./Components/Header/Header"));
+const Home = lazy(() => import("./Components/Home/Home"));
+const Login = lazy(() => import("./Components/Login/Login"));
+const Loading = lazy(() => import("./Components/Loading/Loading"));
+const Inventory = lazy(() => import("./Components/Inventory/Inventory"));
+const Notfound = lazy(() => import("./Components/Notfound/Notfound"));
+const OrderReview = lazy(() => import("./Components/OrderReview/OrderReview"));
+const Required = lazy(() => import("./Components/Required/Required"));
+const Shop = lazy(() => import("./Components/Shop/Shop"));
+const SignUp = lazy(() => import("./Components/SignUp/SignUp"));
+const Shipping = lazy(() => import("./Components/Shipping/Shipping"));
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header></Header>
+
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
@@ -41,7 +42,7 @@ function App() {
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="*" element={<Notfound />}></Route>
       </Routes>
-    </div>
+    </>
   );
 }
 

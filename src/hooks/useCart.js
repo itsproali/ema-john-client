@@ -13,13 +13,12 @@ const useCart = () => {
     const keys = Object.keys(storedCart);
     const userId = user?.user?.uid;
 
-    fetch("https://ema-john-itsproali.herokuapp.com/cartProducts", {
+    fetch("http://localhost:5000/cartProducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify({ keys,  userId }),
+      body: JSON.stringify({ keys, userId }),
     })
       .then((res) => res.json())
       .then((data) => {
